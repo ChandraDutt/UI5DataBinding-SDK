@@ -21,7 +21,7 @@ sap.ui.require([
 			panelHeaderText: "Data Binding Basics"
 
 		});
-		
+		oModel.setDefaultBindingMode(BindingMode.OneWay);
 
 		// Assign the model object to the SAPUI5 core
 		sap.ui.getCore().setModel(oModel);
