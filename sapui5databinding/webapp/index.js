@@ -19,10 +19,16 @@ sap.ui.require([
 			firstName: "Harry",
 			lastName: "Hawk",
 			enabled: true,
-			panelHeaderText: "Data Binding Basics"
+			panelHeaderText: "Data Binding Basics",
+			address: {
+				street: "Dietmar-Hopp-Allee 16",
+				city: "Walldorf",
+				zip: "69190",
+				country: "Germany"
+			}
 
 		});
-		oModel.setDefaultBindingMode(BindingMode.OneWay);
+		// oModel.setDefaultBindingMode(BindingMode.OneWay);
 
 		// Assign the model object to the SAPUI5 core
 		sap.ui.getCore().setModel(oModel);
