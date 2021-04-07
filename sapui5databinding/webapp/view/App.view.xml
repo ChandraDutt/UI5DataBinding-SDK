@@ -2,6 +2,7 @@
 	controllerName="sap.ui.demo.db.controller.App"
 	xmlns="sap.m"
 	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Panel headerText="{i18n>panel1HeaderText}" class="sapUiResponsiveMargin" width="auto">
@@ -49,7 +50,9 @@
 		</content>
 	</Panel>
 	<Panel headerText="{i18n>panel3HeaderText}" class="sapUiResponsiveMargin" width="auto">
-		<List headerText="{i18n>productListTitle}" items="{products>/Products}">
+	<!-- Below list item commented as we create fragments and a factory function for aggregation binding -->
+
+		<!-- <List headerText="{i18n>productListTitle}" items="{products>/Products}">
 			<items>
 				<ObjectListItem press=".onItemSelected"
 					type="Active" title="{products>ProductName}"
@@ -77,7 +80,22 @@
 					</attributes>
 				</ObjectListItem>
 			</items>
-		</List>
+		</List> -->
+
+	<!-- Below list item is created in Step12 after commenting the above list control -->
+	
+	<List
+			id="ProductList"
+			headerText="{i18n>productListTitle}"
+			items="{
+				path: 'products>/Products',
+				factory: '.productListFactory'
+			}">
+			<dependents>
+				<core:Fragment fragmentName="sap.ui.demo.db.view.ProductSimple" type="XML"/>
+				<core:Fragment fragmentName="sap.ui.demo.db.view.ProductExtended" type="XML"/>
+			</dependents>
+	</List>
 	</Panel>
 	<Panel id="productDetailsPanel" headerText="{i18n>panel4HeaderText}" class="sapUiResponsiveMargin" width="auto">
 		<form:SimpleForm editable="true" layout="ColumnLayout">
